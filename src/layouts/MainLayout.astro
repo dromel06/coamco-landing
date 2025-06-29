@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+import { useTranslation } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslation(
+    currentLang as keyof typeof languageList
+);
+---
+
+<!doctype html>
+<html lang="{currentLang}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{}</title>
+        <slot name="head" />
+    </head>
+    <body class="text-gray-900">
+        <slot />
+    </body>
+</html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+</style>

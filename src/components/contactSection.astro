@@ -1,0 +1,72 @@
+---
+import { languageList } from "../i18n/ui";
+import { useTranslation } from "../i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslation(
+    currentLang as keyof typeof languageList
+);
+
+const services = [
+    { label: "Alquiler", value: "alquiler" },
+    { label: "Venta", value: "venta" },
+    { label: "Mantenimiento", value: "mantenimiento" },
+    { label: "Equipo de Segunda", value: "equipo_segunda" },
+    { label: "Capacitación", value: "capacitacion" },
+];
+---
+
+<section id="contact-section" class="w-full px-10 my-20 bg-gray-900 py-12">
+    <h1 class="text-3xl mb-12 text-white">
+        {translateLabels("contact.title")}
+    </h1>
+    <!-- card with services types -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div class="bg-white rounded-lg shadow-lg">
+            <div class="bg-orange-500 p-4 rounded-t-lg">
+                <span class="text-lg">
+                    <strong> Que Tipo de Servicio Necesitas? </strong></span
+                >
+            </div>
+            <div class="flex flex-col m-4">
+                <input
+                    type="radio"
+                    name="service"
+                    value=""
+                    class="hidden"
+                    id="none"
+                    checked
+                    style="display:none;"
+                />
+
+                {
+                    services.map((service, idx) => (
+                        <label
+                            for={`service-${service.value}`}
+                            class="flex items-center justify-between bg-gray-300 px-4 py-2 rounded cursor-pointer hover:bg-gray-400 transition duration-300 mb-4 peer-checked:bg-orange-500"
+                        >
+                            <span>{service.label}</span>
+                            <input
+                                type="radio"
+                                name="service"
+                                id={`service-${service.value}`}
+                                value={service.value}
+                                class="peer sr-only"
+                            />
+                            <span class="ml-2 w-5 h-5 flex items-center justify-center border-2 border-gray-400 rounded-full">
+                                <span class="w-3 h-3 rounded-full bg-orange-500 opacity-0 peer-checked:opacity-100 transition" />
+                            </span>
+                        </label>
+                    ))
+                }
+            </div>
+            <div class="p-4">
+                <button
+                    class="bg-orange-500 text-white px-8 py-2 hover:bg-blue-600 transition duration-300"
+                >
+                    <a href="/contacto">Submit</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

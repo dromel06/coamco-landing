@@ -1,0 +1,72 @@
+---
+import { languageList } from "../i18n/ui";
+import { useTranslation } from "../i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslation(
+    currentLang as keyof typeof languageList
+);
+---
+
+<section class="footer-section">
+    <div class="w-64 mb-16">
+        <img src="/imgs/logoCoamco-white.png" alt="Coamco Logo" />
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+        <div>
+            <span class="text-white text-lg"
+                >{translateLabels("footer.address")}</span
+            >
+            <p class="text-white text-sm">
+                <span set:html={translateLabels("footer.addressValue")} />
+            </p>
+        </div>
+        <div>
+            <span class="text-white text-lg"
+                >{translateLabels("footer.WorkingHours")}</span
+            >
+            <p class="text-white text-sm">
+                <span set:html={translateLabels("footer.WorkingHoursValue")} />
+            </p>
+        </div>
+        <div>
+            <span class="text-white text-lg"
+                >{translateLabels("footer.socialMedia")}</span
+            >
+            <p class="text-white text-sm flex flex row gap-2">
+                <a
+                    href="https://www.facebook.com/sitioincreible"
+                    target="_blank"
+                    rel="noopener noreferrer"><i>F</i></a
+                >
+                <br />
+                <a
+                    href="https://www.X.com/sitioincreible"
+                    target="_blank"
+                    rel="noopener noreferrer"><i>X</i></a
+                >
+                <br />
+                <a
+                    href="https://www.Instagram.com/sitioincreible"
+                    target="_blank"
+                    rel="noopener noreferrer"><i>I</i></a
+                >
+            </p>
+        </div>
+        <div class="mt-8">
+            <button
+                class="bg-white text-black px-8 py-2 hover:bg-gray-100 transition duration-300"
+            >
+                <a href="/">{translateLabels("footer.workWithUs")}</a>
+            </button>
+
+            <style>
+                .footer-section {
+                    padding: 2.5rem;
+                    background-color: #ed6b08;
+                    width: 100vw;
+                }
+            </style>
+        </div>
+    </div>
+</section>
