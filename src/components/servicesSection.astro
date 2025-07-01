@@ -1,0 +1,86 @@
+---
+import { languageList } from "../i18n/ui";
+import { useTranslation } from "../i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslation(
+    currentLang as keyof typeof languageList
+);
+---
+
+<section id="services" class="w-full px-10 my-20 py-12">
+    <div>
+        <h1 class="text-3xl mb-12">Servicios</h1>
+    </div>
+    <div class="flex w-full px-10 py-4">
+        <div class="relative flex items-center justify-center">
+            <span
+                class="absolute bg-orange-600 text-white px-4 py-2 rounded-lg text-lg font-bold"
+            >
+                MANTENIMIENTO
+            </span>
+            <img
+                src="/imgs/service1.png"
+                alt="Servicios"
+                class="w-full max-h-[50vh] border-24 border-orange-600 border-r-0"
+            />
+        </div>
+        <div class="relative flex items-center justify-center">
+            <span
+                class="absolute bg-orange-600 text-white px-4 py-2 rounded-lg text-lg font-bold"
+            >
+                Equipos de segunda
+            </span>
+            <img
+                src="/imgs/service2.png"
+                alt="Servicios"
+                class="w-full max-h-[70vh] border-23 border-orange-600 border-r-0"
+            />
+        </div>
+        <div class="relative flex items-center justify-center">
+            <span
+                class="absolute bg-orange-600 text-white px-4 py-2 rounded-lg text-lg font-bold"
+            >
+                Alquiler
+            </span>
+            <img
+                src="/imgs/service3.png"
+                alt="Servicios"
+                class="w-full max-w-[60vw] border-24 border-orange-600"
+            />
+        </div>
+        <div class="relative flex items-center justify-center">
+            <span
+                class="absolute bg-orange-600 text-white px-4 py-2 rounded-lg text-lg font-bold"
+            >
+                Venta
+            </span>
+            <img
+                src="/imgs/service4.png"
+                alt="Servicios"
+                class="w-full max-h-[70vh] border-24 border-l-0 border-orange-600"
+            />
+        </div>
+        <div class="relative flex items-center justify-center">
+            <span
+                class="absolute bg-orange-600 text-white px-4 py-2 rounded-lg text-lg font-bold"
+            >
+                Capacitacion y respuestos
+            </span>
+            <img
+                src="/imgs/service5.png"
+                alt="Servicios"
+                class="w-full max-h-[50vh] border-23 border-orange-600 border-l-0"
+            />
+        </div>
+    </div>
+    <div class="flex justify-center items-center pt-4">
+        <button
+            class="bg-orange-600 px-10 py-2 text-white hover:bg-orange-100 hover:text-black transition duration-300"
+        >
+            <a href="#contact" class="text-xl"
+                >{translateLabels("quote.button")}</a
+            >
+        </button>
+    </div>
+</section>

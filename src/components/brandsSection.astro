@@ -1,0 +1,77 @@
+---
+import { languageList } from "../i18n/ui";
+import { useTranslation } from "../i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslation(
+    currentLang as keyof typeof languageList
+);
+---
+
+<section class="home-section">
+    <div class="relative">
+        <div class="flex flex-col items-left justify-center pl-16 py-10">
+            <p class="text-white text-sm flex flex row gap-2">
+                <a
+                    href="https://www.facebook.com/sitioincreible"
+                    target="_blank"
+                    rel="noopener noreferrer"><i>F</i></a
+                >
+                <br />
+                <a
+                    href="https://www.X.com/sitioincreible"
+                    target="_blank"
+                    rel="noopener noreferrer"><i>X</i></a
+                >
+                <br />
+                <a
+                    href="https://www.Instagram.com/sitioincreible"
+                    target="_blank"
+                    rel="noopener noreferrer"><i>I</i></a
+                >
+            </p>
+        </div>
+        <div class="absolute top-0 right-0 size-50">
+            <img src="/imgs/logoCoamco-1.png" alt="Coamco Logo" />
+        </div>
+    </div>
+
+    <div class="flex justify-center items-center h-full min-h-[400px]">
+        <img
+            src="/imgs/brands.png"
+            alt="Centered Image"
+            class="w-full max-w-[60vw]"
+        />
+    </div>
+    <div class="flex pl-16 py-10">
+        <a
+            href="#contact"
+            class="text-black px-20 py-3 bg-orange-700 hover:bg-gray-100 transition duration-300"
+        >
+            {translateLabels("quote.button")}
+        </a>
+    </div>
+</section>
+<style>
+    .home-section {
+        padding: 2.5rem;
+        background-image: url(/public/imgs/truck2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        width: 100%;
+    }
+    .home-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+        z-index: 0;
+        pointer-events: none;
+    }
+    .home-section > * {
+        position: relative;
+        z-index: 1;
+    }
+</style>
